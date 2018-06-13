@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas width="500" height="500"></canvas>
+
+</body>
+<script>
+
+    var c = document.querySelector('canvas');
+    var ctx = c.getContext('2d');
+    var img = new Image();
+    var h = 0;
+    img.src = 'NPCrabbitbaby.png';
+    var index = 0;
+    img.onload = function(){
+        window.addEventListener('keydown',function(e){
+            switch(e.keyCode){//左
+                case 37:
+                    h = 1;
+                    break;
+                case 38:
+                    h = 3;
+                    break;
+                case 39:
+                    h = 2;
+                    break;
+                case  40:
+                    h = 0;
+                    break;
+            }
+        });
+
+        setInterval(function(){
+            ctx.clearRect(0,0,500,500);
+            index++;
+            index = index > 3 ? 0 : index;
+           ctx.drawImage(img,40 * index ,65 * h ,40,65,100,100,80,130);//前
+        },120);
+
+    };
+
+
+
+
+
+</script>
+</html>
